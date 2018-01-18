@@ -30,3 +30,7 @@ venv/
 
 # pycharm
 .idea/
+
+# ros
+
+workspace/devel
