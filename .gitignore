@@ -23,7 +23,7 @@ var/
 
 config_local.py
 
-.DS_Store
+*.DS_Store
 
 # virtualenv
 venv/
@@ -34,3 +34,6 @@ venv/
 # ros
 
 workspace/devel
+workspace/build
+workspace/src/CMakeLists.txt
+workspace/.catkin_workspace

@@ -1,1 +1,5 @@
 fabric
+numpy
+pyximport
+SharedArray
+opencv-contrib-python
