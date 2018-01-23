@@ -9,17 +9,15 @@ RUN mkdir /home/earthrover/ros_build
 
 # get the code
 RUN cd /home/earthrover/ros_build && git clone --recursive --depth 1 --branch master https://github.com/earthrover/earth-rover-ugv.git
-
-# make to set up the build env
-RUN cd /home/earthrover/ros_build/earth-rover-ugv/workspace && catkin_make
+RUN /bin/bash -c "source /opt/ros/kinetic/setup.sh && cd /home/earthrover/ros_build/earth-rover-ugv/workspace && catkin_make"
 
 # install code
 USER root
-RUN mkdir /opt/earthrover_ros/kinetic \
-    && cd /home/earthrover/ros_build/earth-rover-ugv/workspace \
-    && source devel/setup.sh \
-    && catkin_make install -DCMAKE_INSTALL_PREFIX=/opt/earthrover_ros/kinetic
+
+RUN mkdir -p /opt/earthrover_ros/kinetic
+RUN /bin/bash -c "source /opt/ros/kinetic/setup.sh && cd /home/earthrover/ros_build/earth-rover-ugv/workspace && catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/kinetic install"
 
 # clean up
 RUN rm -fr /home/earthrover/ros_build
+
 

@@ -2,23 +2,22 @@ version: '3'
 
 services:
   master:
-    build: .
+    image: "earthrover/earthrover-test:0.0.1"
     container_name: master
-    command:
-      - roscore
+    command: roscore
 
   talker:
-    build: .
+    image: "earthrover/earthrover-test:0.0.1"
     container_name: talker
     environment:
       - "ROS_HOSTNAME=talker"
       - "ROS_MASTER_URI=http://master:11311"
-    command: rosrun roscpp_tutorials talker
+    command: /bin/bash -c "source /opt/earthrover_ros/kinetic/setup.sh" && rosrun ros_test talker.py
 
   listener:
-    build: .
+    image: earthrover/earthrover-test:0.0.1
     container_name: listener
     environment:
       - "ROS_HOSTNAME=listener"
       - "ROS_MASTER_URI=http://master:11311"
-    command: rosrun roscpp_tutorials listener
+    command: /bin/bash -c "source /opt/earthrover_ros/kinetic/setup.sh" && rosrun ros_test listener.py
