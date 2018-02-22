@@ -1,3 +1,6 @@
 [submodule "workspace/src/ros_test"]
 	path = workspace/src/ros_test
 	url = https://github.com/earthrover/ros_test
+[submodule "workspace/src/earth_rover"]
+	path = workspace/src/earth_rover
+	url = git@github.com:earthrover/earth_rover.git
